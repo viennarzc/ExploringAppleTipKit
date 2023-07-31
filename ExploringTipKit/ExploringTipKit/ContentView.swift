@@ -45,10 +45,6 @@ struct DynamicHomeTip: Tip {
 }
 
 struct ActionableTip: Tip {
-    
-    
-    let onTapAction: () -> Void
-    
     var title: Text {
         Text("Some useful title").foregroundColor(.indigo)
     }
@@ -73,16 +69,14 @@ struct ActionableTip: Tip {
     
     @Sendable
     func executeAction() {
-        onTapAction()
+        
     }
 }
 
 struct ContentView: View {
     let homeTip = HomeTip()
     let dynamicHomeTip = DynamicHomeTip(value: 4, name: "John")
-    let actionableTip = ActionableTip {
-        debugPrint("Tap")
-    }
+    let actionableTip = ActionableTip()
     
     var body: some View {
         ScrollView {
