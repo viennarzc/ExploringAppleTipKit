@@ -77,6 +77,7 @@ struct ContentView: View {
     let homeTip = HomeTip()
     let dynamicHomeTip = DynamicHomeTip(value: 4, name: "John")
     let actionableTip = ActionableTip()
+    @State private var showPopoverTip: Bool = false
     
     var body: some View {
         ScrollView {
@@ -91,6 +92,20 @@ struct ContentView: View {
                 
                 Section {
                     TipView(homeTip)
+                    
+                } header: {
+                    Text("Regular Tip")
+                        .sectionTitle()
+                }
+                
+                Section {
+                    Button {
+                        showPopoverTip = true
+                    } label: {
+                        Text("Popover Tip")
+                    }
+                    .popoverTip(homeTip)
+
                     
                 } header: {
                     Text("Regular Tip")

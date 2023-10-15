@@ -15,10 +15,12 @@ struct ExploringTipKitApp: App {
             ContentView()
                 .task {
                     // Configure and load your tips at app launch.
-                    try? await Tips.configure {
-                        DisplayFrequency(.immediate)
-                        DatastoreLocation(.applicationDefault)
-                    }
+                    try? Tips.configure(
+                        [.displayFrequency(.immediate),
+                            .datastoreLocation(.applicationDefault)
+                        ]
+                    )
+                    
                 }
         }
     }
